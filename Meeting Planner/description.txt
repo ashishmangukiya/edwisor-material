@@ -1,0 +1,83 @@
+website name: http://planner.ashishmangukiya.com
+
+api : http://plannerapi.ashishmangukiya.com
+
+apidoc :http://plannerapidoc.ashishmangukiya.com
+
+eventDoc : http://plannereventdoc.ashishmangukiya.com
+
+GITHUB links:->
+	
+frontend:
+	https://github.com/ashishmangukiya/meeting-planner-frontend-dist
+	https://github.com/ashishmangukiya/meeting-planner-frontend-code
+backend:
+	https://github.com/ashishmangukiya/meeting-planner-backend
+
+
+
+Project Description:
+
+User Activity:
+
+1) if new user is using this application then user has to sign up first.
+   
+	if user miss any requirement during sigh-up form filling then user will get an error and user can re-correct it easily
+2) once registration done . before log-in  user has to verify account for that verification link is sent to user's email.
+
+3) once user logged-in user will get google look calender. 
+	in this calender user can view any meeting schedule with perfect starts and ends time with meeting name and meeting description.
+	meeting schedule will be shown to user with different colors of circle . 
+	if user hover on any circle then meeting name will be displayed
+4) if user click on any meeting then user will get all information about meeting.
+
+5)if user forgot password then on log-in page  user has to enter email id and click on forgot password button to set new password
+
+6)whenever meeting schedule will be created/updated/deleted by any admin  at the same time user will get notification for that meeting schedule every time. so user can easily understand that which meeting is created/deleted/updated.
+
+
+Admin Activity:
+
+1) if new admin is using this application then admin has to sign up first.
+
+	if admin miss any requirement during form filling then admin will get an error and admin can re-correct it easily
+2) once registration done . before log-in  admin has to verify account for that verification link is sent to admin's email.
+
+3) once admin logged in. admin will get dashboard page where all registered user list will be displayed .
+	admin can click on user to arrange meeting schedule.
+
+4) once admin clicks on user, admin will get user's calender with current date page.
+	admin will have option to create new meeting schedule.
+
+	if admin has already created few meeting schedule for that user then all meeting will be displayed on calendar (default).
+	 and all meeting detail will be displayed on table also , so if admin want to update or delete schedule then click on view button for respected schedule. 
+	if admin has to fill the form as requirement and sent to that user .
+	every time whenever admin creates/deletes/updates any meeting schedule then admin will get notification at the same time 
+
+5)if admin forgot password then on log-in page  admin has to enter email id and click on check box to set new password
+
+6) reminder feature:
+	
+	if any user has less then 3 minutes remains to start meeting , like user has meeting on  2:30pm then  admin has to click on user in between 2:27 to 2:30 so automatically reminder will be sent to respected users.  or refresh  page in between 2:27 to 2:30 on user's page 
+
+	if user is online then user will get reminder notification when meeting has less then 3 minutes to start  and if user has not click on reminder notification then notification will again pop-up in next 5 second every time . if user click on reminder notification then reminder will be stopped automatically. and on admin side page will be refresh automatically  
+
+	if user never click on reminder notification then reminder will be automatically off on 2:30 
+
+	if user is offline and has meeting reminder then user will get email with alert message.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 

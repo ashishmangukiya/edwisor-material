@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="image">
+      <img class="imageone" src="{{this.map}}">
+    </div>
+    <br>
+    <div class="design">
+      <br>
+   <h5> <b>Currency Filter:</b></h5>
+    <div class="row">
+      <div class="col-8 col-md-4 ">
+    <input type="text" class="form-control" placeholder="enter currency code. " [(ngModel)]="this.currency" autofocus>
+        <p>example :INR,COP </p>
+  </div>
+        <div class="col-2 col-md-2">
+    <a class="btn btn-secondary " style="color: white"(click)="currencySearch()"><b>Search</b></a>
+    </div>
+    </div>
+    <h5> <b>Language Filter:</b></h5>
+    <div class="row">
+      <div class="col-8 col-md-4">
+    <input type="text" class="form-control" placeholder="enter language code" [(ngModel)]="this.language" >
+    <p>example :HI,ES </p>
+
+  </div>
+        <div class="col-2 col-md-2">
+    <a class="btn btn-secondary " style="color: white" (click)="languageSearch()"><b>Search</b></a>
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class="container">
+        <button class="btn btn-primary" type="button" (click)="getPrevious()">Back</button>
+        </div>
+        <br>
+    <div class="row" *ngIf="this.currentRegion">
+      <div class="col-12 col-sm-6 col-md-4 col-xl-4" *ngFor="let country of this.currentRegion | paginate: { itemsPerPage:9,currentPage:p}">
+   
+          <div class="card back">
+            <img alt="Card image cap" class="card-img-top back img-fluid" src="{{country.flag}}" />
+            <br>
+            <div class="card-block">
+              <h4 class="card-title text-center"><b>{{country.name}}</b></h4>
+              <p class="card-text text-center" *ngIf="country.nativeName"><b>Native name :</b>{{country.nativeName}}</p>
+              <p class="card-text text-center" *ngIf="!country.nativeName"><b>Native Name :</b>N/A</p>
+
+              <p class="card-text text-center" *ngIf="country.capital"><b>Capital :</b>{{country.capital}}</p>
+              <p class="card-text text-center" *ngIf="!country.capital"><b>Capital :</b>N/A</p>
+
+              <a class="btn btn-secondary " [routerLink]="['/country',country.alpha3Code ]">View Detail</a>
+            <br>
+            </div>
+          </div>
+          <br>
+         
+      </div>
+      <div class="col-xl-12 text-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+</div>

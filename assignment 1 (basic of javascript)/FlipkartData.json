@@ -1,0 +1,66 @@
+{
+	"userDetail": {
+		"firstname": "ashish",
+		"lastname": "mangukiya",
+		"email": "ashishmangukiya97@gmail.com",
+		"password": "123456789"
+
+	},
+	"products": [{
+			"Electronics": {
+				"mobiles": [{
+						"MI": ["redmiNote4", "redmiNote5", "Mi6", "Mi4i", "Redminote3", "Redminote2", "redmiNote5Pro"]
+					},
+					{
+						"OPPO": ["OppoF5", "OppoF3Plus", "OppoA37"]
+					},
+					{
+						"SAMSUNG": ["SamsungGalaxyA6", "SamsungGalaxyJ7Pro", "SamsungGalaxyA8Plus2018", "SamsungGalaxyJ7Nxt"]
+					},
+					{
+						"APPLE": ["Iphone6", "Iphone7", "Iphone8", "IphoneX"]
+					},
+					{
+						"VIVO": ["VivoX21", "VivoY53", "VivoV7Plus", "VivoY71"]
+
+					}
+				],
+
+				"mobileAccessories": ["headphones", "screenGuards", "powerBanks", "Chargers", "memoryCards"]
+			}
+		},
+		{
+			"Men": {
+				"Footwear": ["SportsShoes", "casualShoes", "loafers", "Sneakers"],
+				"TopWear": ["TShirts", "Shirts", "Kurtas", "Jackets"],
+				"BottomWear": ["Jeans", "Trousers", "TrackPants"],
+				"Watches": ["Fastrack", "Titan", "Casio"]
+			}
+		},
+		{
+			"women": {
+				"EthnicWear": ["Sarees", "Blouse", "DressMaterials", "Dupattas"],
+				"FootWear": ["SportsShoes", "casualShoes", "Heels", "Boots"],
+				"beauty": ["MakeUp", "SkinCare", "hairCare"]
+			}
+		},
+		{
+			"TVs": ["Mi", "Thomson", "Vu", "Samsung", "LG", "Kodak", "panasonic"]
+		},
+		{
+			"HomeAndFurnitures": {
+				"KitchenAndDining": ["PoatsAndPans", "PressureCookers", "KitchenTools", "GasStoves"],
+				"Furnitures": ["Beds", "Sofas", "Tables", "Chairs", "Drawers", "SofaBeds", "Wardrobes"],
+				"Furnishing": ["Bedsheets", "Curtains", "Towels", "PilllowCovers", "Blankets"]
+			}
+		},
+		{
+			"books": ["EntranceExams", "Academic", "indianWritting", "BioGraphies", "Children", "NOnFriction", "SelfHelp", "Business"]
+		}
+
+
+
+	]
+
+
+}

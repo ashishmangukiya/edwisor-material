@@ -1,0 +1,144 @@
+<div class="container-fluid">
+    <div id="mySidenav" class="sidenav"  *ngIf="this.userInfo">
+        <button class="btn btn-sm closebtn"  (click)="closeNav()">&times;</button>
+        <img src="assets/photo.png" >
+        <h5 style="color:black;text-align: center"><b>{{this.userInfo.firstName |titlecase}} {{this.userInfo.lastName}}</b></h5>
+        <p style="color:black;text-align: center">{{this.userInfo.email}}</p>
+        <br><br>
+        <button class="btn btn-sm btn-outline-success" (click)='LogOut()' style="color: black;margin-left: auto;margin-right: auto;" >LogOut</button>
+      </div>
+      
+      <span class="menu "  (click)="openNav()">&#9776;</span>
+  <br>
+<ng-template #modalContent id='modal' let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title ">created by <b>{{ modalData?.event.adminName |titlecase }}</b> </h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <b>Meeting Name :</b>
+      <p>{{ modalData?.event.title }}</p>
+      <b>Description :</b> 
+      <p>{{modalData?.event.description}}</p>
+      <b>Starts At :</b>
+      <p>{{ modalData?.event.start| date:'medium'}}</p>
+      <b>Ends At :</b>
+      <p>{{modalData?.event.end| date:'medium'}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+  </div>
+</ng-template>
+<ng-template #alert let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title ">created by <b>{{ reminder?.data.title |titlecase }}</b> </h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <b>Meeting Name :</b>
+      <p>{{ modalData?.event.title }}</p>
+      <b>Description :</b> 
+      <p>{{modalData?.event.description}}</p>
+      <b>Starts At :</b>
+      <p>{{ modalData?.event.start| date:'medium'}}</p>
+      <b>Ends At :</b>
+      <p>{{modalData?.event.end| date:'medium'}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+  </div>
+</ng-template>
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn  btn-sm btn-outline-success"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Previous
+      </div>
+      <div
+        class="btn  btn-sm btn-outline-success"
+        mwlCalendarToday
+        [(viewDate)]="viewDate">
+        Today
+      </div>
+      <div
+        class="btn btn-sm btn-outline-success"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h4><b>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</b></h4>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn  btn-sm btn-outline-success"
+        (click)="view = CalendarView.Month">
+        Month
+      </div>
+      <div
+        class="btn  btn-sm btn-outline-success"
+        (click)="view = CalendarView.Week">
+        Week
+      </div>
+      <div
+        class="btn  btn-sm btn-outline-success"
+        (click)="view = CalendarView.Day">
+        Day
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div [ngSwitch]="view">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-10 my-style ">
+  <mwl-calendar-month-view 
+  *ngSwitchCase="CalendarView.Month"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-month-view>
+  </div>
+  <div class="col-xl-1"></div>
+
+  </div>
+  </div>
+  <mwl-calendar-week-view
+  *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>
+</div>
+</div>
+<br>

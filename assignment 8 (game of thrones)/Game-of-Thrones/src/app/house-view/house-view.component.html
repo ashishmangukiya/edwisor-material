@@ -1,0 +1,39 @@
+<div class="container-fluid back">
+    <div class="row" *ngIf="currentHouse">
+      <div class="col-12" style="text-align: center">
+        <br>
+          <h2>House Detail</h2>
+          <hr>
+        <h3>TITLE: {{currentHouse.name| uppercase}}</h3>
+        <br>
+        </div>
+        <div class="col-8 col-md-4 special" >
+        <img src="assets/./house.jpg" >
+        </div>
+       
+        <div class="col-md-8 one " style="text-align: center">
+          <p><b>Region: </b> {{currentHouse.region}}</p>
+          <p><b>Coat Of Arms: </b> {{currentHouse.coatOfArms}}</p>
+          <p><b>Words :</b> {{currentHouse.words}}  </p>
+          <P><b>Titles:</b> {{currentHouse.titles }} </P>
+          <p><b>Founded:</b>{{currentHouse.founded }} </p>
+          <p><b>Seats:</b> {{currentHouse.seats }} </p>
+         </div>
+        </div>  
+        <br>
+        <h2>Other Detail:</h2>
+      <div class="character">
+      <div class="row" *ngIf="currentHouse"> 
+        <div class="col-12" style="text-align: center">   
+          <p style="font-size: 16px"><b>Heir: </b>{{currentHouse.heir }} </p>     
+          <p style="font-size: 16px"><b>Overlord: </b>{{currentHouse.overlord }} </p>
+          <p><b>Founder: </b>{{currentHouse.founder }} </p>
+          <p><b>Cadet Branches: </b>{{currentHouse.cadetBranches }} </p>  
+          </div>
+        </div>
+        <div class="row"  style="text-align: center" *ngIf="currentHouse"> 
+            <p class="col-12"><b>Sworn Memebers: </b> </p>
+        <p class="col-12" style="font-size: 16px" *ngFor="let member of currentHouse.swornMembers">{{member}}</p>
+          </div>
+      </div>
+  </div>     

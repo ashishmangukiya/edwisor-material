@@ -1,0 +1,14 @@
+.hmm{
+    border-radius: 15px;
+    background: linear-gradient(to bottom left, #3399ff 0%, #99cc00 100%);
+
+
+}
+.favourite{
+    padding: 10px;
+}
+.header{
+    text-align:center;
+    background:#F0F0F0;
+    border-radius: 15px;
+}

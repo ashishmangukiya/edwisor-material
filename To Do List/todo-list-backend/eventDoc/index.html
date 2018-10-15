@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Events</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <style>
+    .icon-block {
+        padding: 0 15px;
+    }
+
+    .icon-block .material-icons {
+        font-size: inherit;
+    }
+    </style>
+</head>
+
+<body>
+   
+    <div class="section no-pad-bot" style="margin-bottom: 0px" id="index-banner">
+        <div class="container" style="width: 80%">
+          <p style="font-size: 2em; font-weight: 540; text-align: center">Events documentation</p>
+            <div class="row">
+
+                <div class="col  hide-on-small-only m4 l3" >
+                    <ul class="section table-of-contents">
+                        <li><a href="#listen" style="color: #03a9f4; font-size: 1.2em; font-weight: bold">Listen</a></li>
+                        <li><a href="#verify">verify-user </a></li>
+                        <li><a href="#usersList">online-user-list</a></li>
+                        <li><a href="#errormessage">error-message</a></li>
+                        <li><a href="#userId">userId</a></li>
+                        <li><a href="#searchedresult">searched-result</a></li>
+					    <li><a href="#friendnotify">friend-notify</a></li>
+                        <li><a href="#getupdate">get-update</a></li>
+
+                        <li><a href="#emit" style="color: #03a9f4; font-size: 1.2em; font-weight: bold">Emit</a></li>
+                        <li><a href="#set-user">set-user</a></li>
+                        <li><a href="#createtask">create-task</a></li>
+                        <li><a href="#addtask">add-task</a></li>
+                        <li><a href="#addsubtask">add-sub-task</a></li>
+                        <li><a href="#updatetask">update-task</a></li>
+                        <li><a href="#updatesubtask">update-sub-task</a></li>
+                        <li><a href="#completedtask">completed-task</a></li>
+                        <li><a href="#completedsubtask">completed-sub-task</a></li>
+                        <li><a href="#recompletetask">re-complete-task</a></li>
+                        <li><a href="#recompletesubtask">re-complete-sub-task</a></li>
+            		    <li><a href="#deletefulltask">delete-full-task</a></li>
+                        <li><a href="#deletetask">delete-task</a></li>
+                        <li><a href="#deletefriendtask">delete-friend-task</a></li>
+                        <li><a href="#deletefriendsubtask">delete-friend-sub-task</a></li>
+                        <li><a href="#deletesubtask">delete-sub-task</a></li>           
+               			<li><a href="#searchuser">search-user</a></li>
+                        <li><a href="#sendrequest">send-request</a></li>
+                        <li><a href="#acceptedrequest">accepted-request</a></li>
+                        <li><a href="#rejectrequest">reject-request</a></li>
+                        <li><a href="#sendtoallfriend">send-to-all-friend</a></li>
+                       <li><a href="#undotask">undo-task</a></li>
+                        <li><a href="#undosubtask">undo-sub-task</a></li>
+                        <li><a href="#unfriend">unfriend</a></li>
+                        <li><a href="#undofriendtask">undo-friend-task</a></li>
+                        <li><a href="#undofriendsubtask">undo-friend-sub-task</a></li>
+                        <li><a href="#disconnect">disconnect</a></li>
+                    </ul>
+                </div>
+
+                <div class="col s12 m8 l9">
+
+                    <div id="listen" class="section scrollspy"></div>
+                    <h4>Events to listen</h4>
+
+                    <div id="verify" class="section scrollspy">
+                        <h5>verify User</h5>
+                        This event <span style="font-weight: 600">("verify-user")</span> has to be listened on the user's end to verify user authentication.<br/>
+                        user will only be set as online after verification of authentication token.<br/>
+                    </div>
+                    <div id="usersList" class="section scrollspy">
+                        <h5>online-user-list event</h5>
+                        This event <span style="font-weight: 600">("online-user-list")</span> has to be listen on user's end to get updated online user list  .<br/>
+                        and the online-user-list will be in the form of object(userId:userName);                    
+                    </div>
+                    <div id="errormessage" class="section scrollspy">
+                        <h5>error-message event</h5>
+                        This event <span style="font-weight: 600">("error-message")</span>has to listen on both user's end so if any error occured on socket then error will be notified to user
+                    </div>
+                    <div id="userId" class="section scrollspy">
+                        <h5>userId event</h5>
+                        This event <span style="font-weight: 600">("userId")</span> has to be listened 
+                        on user side . whenever user perform operation like send friend request or reject friend request or unfriend someone or accept request at the same time this event calls and user will get update everytime whenever these four operation performs.
+                    </div>
+                      <div id="searchedresult" class="section scrollspy">
+                        <h5>searched-result event</h5>
+                        This event <span style="font-weight: 600">("searched-result")</span> has to be listened on user side . whenever user search any name then all matched name will be displayed on screen.
+                    </div>
+     				<div id="friendnotify" class="section scrollspy">
+                        <h5>friend-notify event</h5>
+                        This event <span style="font-weight: 600">("friend-notify")</span> has to be listened on friend user side . whenever user edit/update/delete/undo any task or subtask of friend at same time all friend will get notification.
+                    </div>
+					<div id="getupdate" class="section scrollspy">
+                        <h5>get-update event</h5>
+                        This event <span style="font-weight: 600">("get-update")</span> has to be listened on user side . whenever user create/edit/update/delete/undo any task or subtask at same time this event will give updated task list.
+                    </div>
+                    <div id="emit" class="section scrollspy"></div>
+                    <h4>Events to emit</h4>
+
+                    <div id="set-user" class="section scrollspy">
+                        <h5>set-user event</h5>
+                        This event <span style="font-weight: 600">("set-user")</span> has to be emitted 
+                        when user get verify . <br>
+                        if user authorized using authToken then user will be added to online-list. 
+                    </div>
+                    <div id="createtask" class="section scrollspy">
+                        <h5>create-task event</h5>
+                        This event <span style="font-weight: 600">("create-task")</span> has to be emitted when user creates task-title.
+                        <br>
+                    <div id="addtask" class="section scrollspy">
+                        <h5>add-task event</h5>
+                        This event <span style="font-weight: 600">("addtask")</span> has to be emitted when user creates task.
+                         <br/>
+                    </div>
+                       <div id="addsubtask" class="section scrollspy">
+                        <h5>add-sub-task event</h5>
+                        This event <span style="font-weight: 600">("add-sub-task")</span> has to be emitted when user creates new sub-task 
+                        <br>
+                    </div>
+                      <div id="updatetask" class="section scrollspy">
+                        <h5>update-task event</h5>
+                        This event <span style="font-weight: 600">("update-task")</span> has to be emitted when user updates any task 
+                        <br>          
+                    </div>
+                      <div id="updatesubtask" class="section scrollspy">
+                        <h5>update-sub-task event</h5>
+                        This event <span style="font-weight: 600">("update-sub-task")</span> has to be emitted when user updates any sub task. 
+                    </div>
+                      <div id="completedtask" class="section scrollspy">
+                        <h5>completed-task event</h5>
+                        This event <span style="font-weight: 600">("completed-task")</span> has to be emitted when user marks any task as completed.
+                    </div>
+                      <div id="completed-sub-task" class="section scrollspy">
+                        <h5>completed-sub-task event</h5>
+                        This event <span style="font-weight: 600">("completed-sub-task")</span> has to be emitted when user marks any sub-task as completed.
+                    </div>
+                      <div id="recompletetask" class="section scrollspy">
+                        <h5>re-complete-task event</h5>
+                        This event <span style="font-weight: 600">("re-complete-task")</span> has to be emitted when user marks any task as not completed.
+                    </div>
+                      <div id="recompletesubtask" class="section scrollspy">
+                        <h5>re-complete-sub-task event</h5>
+                        This event <span style="font-weight: 600">("re-complete-sub-task")</span> has to be emitted when user marks any sub-task as not completed.
+                    </div>
+                      <div id="deletefulltask" class="section scrollspy">
+                        <h5>delete-full-task event</h5>
+                        This event <span style="font-weight: 600">("delete-full-task")</span> has to be emitted when user deletes any task.
+                    </div>
+                      <div id="deletetask" class="section scrollspy">
+                        <h5>delete-task event</h5>
+                        This event <span style="font-weight: 600">("delete-task")</span> has to be emitted when user deletes any task.
+                    </div>
+                      <div id="deletesubtask" class="section scrollspy">
+                        <h5>delete-sub-task event</h5>
+                        This event <span style="font-weight: 600">("delete-sub-task")</span> has to be emitted when user deletes any sub-task.
+                    </div>
+                      <div id="deletefriendtask" class="section scrollspy">
+                        <h5>delete-friend-task event</h5>
+                        This event <span style="font-weight: 600">("delete-friend-task")</span> has to be emitted when user deletes any friend's task.
+                    </div>
+                      <div id="delete-friend-sub-task" class="section scrollspy">
+                        <h5>delete-friend-sub-task event</h5>
+                        This event <span style="font-weight: 600">("delete-friend-sub-task")</span> has to be emitted when user deletes any friend's sub-task.
+                    </div>
+                      <div id="searchuser" class="section scrollspy">
+                        <h5>search-user event</h5>
+                        This event <span style="font-weight: 600">("search-user")</span> has to be emitted when user searches any friend name.
+                    </div>
+                      <div id="sendrequest" class="section scrollspy">
+                        <h5>send-request event</h5>
+                        This event <span style="font-weight: 600">("send-request")</span> has to be emitted when user sends request to any person.
+                    </div>
+                      <div id="rejectrequest" class="section scrollspy">
+                        <h5>reject-request event</h5>
+                        This event <span style="font-weight: 600">("reject-request")</span> has to be emitted when user rejects any friend request.
+                    </div>
+                      <div id="acceptedrequest" class="section scrollspy">
+                        <h5>accepted-request event</h5>
+                        This event <span style="font-weight: 600">("accepted-request")</span> has to be emitted when user accepts any friend request
+                    </div>
+                      <div id="sendtoallfriend" class="section scrollspy">
+                        <h5>send-to-all-friend event</h5>
+                        This event <span style="font-weight: 600">("send-to-all-friend")</span> has to be emitted when user perform any operation on friend's task at same this event send notification to all friends.
+                    </div>
+                    <div id="undotask" class="section scrollspy">
+                        <h5>undo-task event</h5>
+                        This event <span style="font-weight: 600">("undo-task")</span> has to be emitted when user want to recover recently deleted task  
+                    </div>
+                      <div id="undosubtask" class="section scrollspy">
+                        <h5>undo-sub-task event</h5>
+                        This event <span style="font-weight: 600">("undo-sub-task")</span> has to be emitted when user want to recover recently deleted sub-task
+                    </div>
+                      <div id="undofriendtask" class="section scrollspy">
+                        <h5>undo-friend-task event</h5>
+                        This event <span style="font-weight: 600">("undo-friend-task")</span> has to be emitted when user deletes any task of friend and if user wants deleted task of friend then this event will call.
+                    </div>
+                      <div id="undofriendsubtask" class="section scrollspy">
+                        <h5>undo-friend-sub-task event</h5>
+                        This event <span style="font-weight: 600">("undo-friend-sub-task")</span> has to be emitted when user deletes any sub task of friend and if user wants deleted sub task of friend then this event will call.
+                    </div>
+                     <div id="unfriend" class="section scrollspy">
+                        <h5>unfriend event</h5>
+                        This event <span style="font-weight: 600">("unfriend")</span> has to be emitted when user unfriend someone.
+                    </div>
+					<div id="disconnect" class="section scrollspy">
+                        <h5>disconnection</h5>
+                        This event <span style="font-weight: 600">("disconnection")</span> has to be emitted, when the user gets disconnected.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br/><br/><br/><br/>
+           <script src="code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.scrollspy').scrollSpy();
+    });
+    </script>
+    <script>
+    (function($) {
+        $(function() {
+
+            $('.button-collapse').sideNav();
+
+        }); // end of document ready
+    })(jQuery); // end of jQuery name space
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,14 @@
+.hmm{
+    border-radius: 15px;
+    background: linear-gradient(-90deg, red, yellow);
+
+
+}
+.favourite{
+    padding: 10px;
+}
+.header{
+    text-align:center;
+    background:#F0F0F0;
+    border-radius: 15px;
+}

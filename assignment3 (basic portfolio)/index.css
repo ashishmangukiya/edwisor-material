@@ -1,0 +1,167 @@
+:root{
+	font-size: 20px;
+	background: #9ADFDD;
+
+}
+body{
+	margin: 0px;
+	padding: 0px;
+}
+.container{
+	margin: 0px;
+	padding: 0px;
+
+}
+
+.header {
+	background: white;
+  	border: 5px solid #9ADFDD;
+  	box-shadow: 5px 10px #888888;
+	border-radius: 15px;
+	margin: 30px;
+
+}
+
+.first{
+	text-shadow: 2px 2px 5px #9ADFDD;
+	text-align: center;
+	font-size: 2rem;
+	margin: 0px;
+
+}
+.second{
+	text-shadow: 2px 2px 5px #9ADFDD;
+	text-align: center;
+	margin: 0px;
+	font-size: 1.5rem;
+}
+
+.introduction{
+	display: flex;;
+	direction: row;
+
+}
+.titleofaboutme{
+ 	text-shadow: 2px 2px 5px red;
+	font-size: 2rem;
+}
+.paragraph{
+	padding: 5px;
+	background: white;
+	border: 5px solid #9ADFDD;
+  	box-shadow: 5px 10px #888888;
+	width: 40vw;
+	border-radius: 15px;
+	margin-left: 30px;
+
+}
+.image img{
+	width:40vw;
+	border: 5px solid #9ADFDD;
+  	box-shadow: 5px 10px #888888;
+	border-radius: 15px;
+	margin-left: 10vw;
+	height: 40vh;
+
+}
+
+.titleofskills{
+	text-shadow: 2px 2px 5px red;
+	font-size: 2rem;
+	margin-top: 30px;
+
+}
+.row{
+	list-style-type: none;
+	display: flex;
+	direction: row;
+}
+.row li{
+	font-style: italic;
+	font-size: 1rem;
+	width: 25vw;
+	background: white;
+	height: 5vh;
+	text-align: center;
+	padding: 5px;
+	border: 5px solid #9ADFDD;
+  	box-shadow: 5px 10px #888888;
+  	border-radius: 15px;
+  	margin: 0px;
+
+}
+.titleofproject{
+	text-shadow: 2px 2px 5px red;
+	font-size: 2rem;
+	margin-top: 30px;
+
+}
+
+.projects{
+
+	border: 5px solid #9ADFDD;
+  	box-shadow: 5px 10px #888888;
+  	border-radius: 15px;
+	padding: 10px;
+	margin: 20px;
+	background: white;
+}
+.title{
+	font-size: 1.3rem;
+}
+@media only screen and (max-width: 700px) {
+	.titleofskills,.titleofaboutme,.titleofproject{
+		font-size: 1.5rem;
+	}
+    .introduction {
+        flex-direction: column;
+    }
+    .paragraph{
+    	margin-top: 10px;
+    	margin-left: auto;
+    	margin-right: auto;
+    	width: 80vw;
+    }
+    .image {
+    	
+        order: -1;
+    }
+    .image img{
+
+        width: 70vw;
+    }
+    .row{
+    	display: flex;
+    	flex-wrap: wrap;
+    }
+    .row li{
+    	font-size: 0.9rem;
+    }
+    .first{
+    	font-size: 1.2rem;
+
+    }
+    .second{
+    	font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 280px){
+	.titleofskills,.titleofaboutme,.titleofproject,.title,.first{
+		font-size: 1rem;
+	
+	}
+	.second,.paragraph,.projects{
+		font-size: 0.8rem;
+	}
+	.row li{
+		width: 40vw;
+		font-size: 0.6rem;
+	}
+	.title{
+		font-size: 0.8rem;
+	}
+	.projects{
+		margin: 10px;
+	}
+}

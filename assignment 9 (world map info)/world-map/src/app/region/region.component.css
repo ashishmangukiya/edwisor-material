@@ -1,0 +1,80 @@
+.world{
+    position: relative;
+}
+  .Asia{
+        position: absolute;
+        left:68%;
+        top:21%;
+  }
+  a{
+      border-radius: 20px;
+      background: lightblue;
+      color:black;
+  }
+  .North-America{
+          top:63%;
+          position: absolute;
+          left: 25%;
+  }
+  .Europe{
+    left: 49%;
+    top:16%;
+    position: absolute;
+
+    }
+  .Africa{
+      top: 40%;
+      left:48%;
+      position: absolute;
+
+
+  }
+  .South-America{
+      top:19%;
+      position: absolute;
+      left: 15%;
+
+  }
+  .Oceania{
+      left: 84%;
+      position: absolute;
+      top:74%;
+  }
+  
+
+  @media only screen and (max-width: 600px) {
+  
+a{
+    font-size: 11px;
+}
+.South-America{
+    top:19%;
+    position: absolute;
+    left: 11%;
+
+}
+.North-America{
+    top:63%;
+    position: absolute;
+    left: 18%;
+}
+.Europe{
+    left: 42%;
+    top:9%;
+    position: absolute;
+
+    }
+    .Oceania{
+        left: 75%;
+        position: absolute;
+        top:74%;
+    }
+    .Africa{
+        top: 40%;
+        left:45%;
+        position: absolute;
+  
+  
+    }
+
+}

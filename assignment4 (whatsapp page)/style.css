@@ -1,0 +1,63 @@
+:root{
+	font-size: 16px;
+}
+
+.block{
+	border:1px solid #128c7e;
+	color: black;
+	border-radius: 10px;
+	
+}
+
+.radius{
+	border-radius: 10px;
+
+}
+.names{
+	color: red;
+}
+.hmm{
+	background: #128c7e;
+
+}
+.hell{
+	background: #128c7e;
+}
+.font{
+	margin-top: 20px;
+	font-size: 1.5rem;
+	margin-left: 20px;
+	color: white;
+}
+.messages{
+	background: #90ee90;
+}
+
+
+.anyclass {
+	height:85vh;
+  	overflow-y:  scroll;
+    overflow-x: hidden;
+    background-color: #E8E8E8	;
+    padding: 0;
+    margin: 0;
+
+}
+.fontforall{
+	font-size: 1rem;
+}
+
+.read{
+	font-size:2rem;
+}
+.blue{
+	color: blue;
+}
+.white{
+	color: white;
+}
+@media only screen and (max-width: 400px) {
+    .special {
+        font-size: 18px;
+    }
+}

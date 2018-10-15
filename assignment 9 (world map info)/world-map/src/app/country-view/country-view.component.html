@@ -1,0 +1,97 @@
+<div class="container">
+<div class="row" *ngIf="this.countryDetail">
+  <div class="col-12">
+   <h2 class="text-center"><b>Country Name : {{this.countryDetail.name}}</b></h2>
+  </div>
+<div class="col-12">
+ <img src="{{this.countryDetail.flag}}" width="100%"   >
+</div>
+</div>
+</div>
+<br>
+<div class="container">
+<button class="btn btn-primary" type="button" (click)="getPrevious()">Back</button>
+</div>
+<div class="container mt-3 info" *ngIf="this.countryDetail">
+    <br>
+    <h2><b>Country Details</b></h2>
+    <br>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#menu1"><b>Capital</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link hmm " data-toggle="tab" href="#menu2"><b>Alt-Spellings</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu3"><b>Languages</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu4"><b>Currencies</b></a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu5"><b>RegionalBlocs</b></a>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu6"><b>Others</b></a>
+      </li>
+    </ul>
+  
+    <div class="tab-content">
+     
+      <div id="menu1" class="container tab-pane active"><br>
+        <p><b>Capital :</b> {{this.countryDetail.capital}} </p>
+      </div>
+      <div id="menu2" class="container tab-pane fade"><br>
+        <p><b>Alt-Spellings :</b> {{this.countryDetail.altSpellings}} </p>
+      </div>
+      <div id="menu3" class="container tab-pane fade"><br>
+            <div class="row" *ngFor="let language of this.countryDetail.languages">
+            <div class="col-12 col-xl-3">
+            <b>Name : </b> {{language.name}}
+            </div>
+            <div class="col-12 col-xl-3">
+            <b>NativeName : </b>{{language.nativeName}} 
+            </div>
+        </div>
+             </div>
+      <div id="menu4" class="container tab-pane fade "><br>
+        <div class="row" *ngFor="let currency of this.countryDetail.currencies">
+        <p class="col-xl-3"><b>Code :</b>{{currency.code}} </p>
+        <p class="col-xl-3"><b>Name :</b> {{currency.name}} </p>
+        <p class="col-xl-3"><b>Symbol :</b> {{currency.symbol}} </p>
+        </div>
+    </div>
+    <div id="menu5" class="container tab-pane fade"><br>
+        <div  *ngIf="this.countryDetail.regionalBlocs[0]">
+        <div *ngFor="let regional of this.countryDetail.regionalBlocs">
+           <p class="row"> <b>Acronym :</b>{{regional.acronym}}</p>
+           <p class="row"> <b>Name:</b> {{regional.name}} </p>
+        </div>
+        </div>
+        <div class="row"  *ngIf="this.countryDetail.regionalBlocs=='' || this.countryDetail.regionalBlocs==undefined "><b>RegionalBloc :</b> N/A</div>
+
+      </div>
+        <div id="menu6" class="container tab-pane fade"><br>
+            <div class="row" *ngIf="this.countryDetail.borders[0]" ><b>Border :</b>
+            <p  *ngFor="let border of this.countryDetail.borders;let first=first;let last=last"> {{border}}{{last? '':','}} </p>
+            </div>
+            <p class="row" *ngIf="this.countryDetail.borders=='' || this.countryDetail.borders==undefined "><b>Border :</b>N/A </p>
+            <p class="row"><b>Region : </b>{{this.countryDetail.region}} </p>
+            <p class="row"><b>Sub-Region :</b> {{this.countryDetail.subregion}} </p>
+
+            <p class="row"><b>Alpha3Code :</b> {{this.countryDetail.alpha3Code}} </p>
+            <p class="row"><b>CallingCode : </b>{{this.countryDetail.callingCodes}} </p>
+            <p class="row"><b>Demonym : </b>{{this.countryDetail.demonym}} </p>
+            <p class="row"><b>Population :</b> {{this.countryDetail.population}} </p>
+            <div class="row" *ngIf="this.countryDetail.timezones[0]" ><b>Timezones :</b>
+            <p  *ngFor="let timezone of this.countryDetail.timezones;let first=first;let last=last"> {{timezone}}{{last? '':','}} </p>
+            </div>
+            <p class="row"><b>TopLevelDomain :</b> {{this.countryDetail.topLevelDomain }} </p>
+
+          </div>
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>

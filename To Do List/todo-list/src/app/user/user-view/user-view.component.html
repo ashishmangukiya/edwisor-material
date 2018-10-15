@@ -1,0 +1,380 @@
+<div class="container-fluid "  >
+  <div class="row main">
+    <div class="col-5 col-sm-4 col-md-6 col-lg-8 col-xl-8  ">
+      <button class="btn btn-link"  data-toggle="tooltip" data-placement="top" title="Home" (click)="homePage()"><h4 style="color:white; margin-top: 5px;" >To-Do</h4></button>
+    </div>
+    <div class=" hide col-sm-4 col-md-3 col-lg-2 col-xl-2  ">
+      <input type="text" placeholder="Search friend" class="form-control" (keydown)='searchFriend($event)' [(ngModel)]='searchUser'>   
+    </div>
+    <div class="col-2 dropdown hide-two   ">
+        <button class="btn btn-link"  id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-search" style="font-size:36px;color: white;margin-top: 5px;"></i>
+          </button>
+      <div class="dropdown-menu " aria-labelledby="dropdownMenu">
+          <div class=" dropdown-item " >
+              <div class="row">
+                <div class="col-12">
+                    <input type="text" placeholder="Search friend" class="form-control" (keydown)='searchFriend($event)' [(ngModel)]='searchUser' autofocus>   
+                </div>
+              </div>
+          </div>
+   </div>
+    </div>
+    <div class="col-2 dropdown col-sm-2 col-md-1 col-lg-1 col-xl-1">
+            <button class="btn btn-link" (click)="getAllFriendsRequest()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell" style="font-size:36px;color: white;margin-top: 5px;"><sup *ngIf='this.friendRequestList.length>0'><span style="font-size:10px;" class="badge rounded-circle badge-light">{{this.friendRequestList.length}}</span></sup></i>
+              </button>
+            <div class="dropdown-menu " *ngIf='this.friendRequestList' aria-labelledby="dropdownMenuButton">
+                  <div *ngIf='this.friendRequestList.length==0'>
+                    <div class="text-muted text-center">
+                      <p>empty friend request list</p>
+                    </div>
+                  </div>
+                  <div class=" dropdown-item " *ngFor='let name of this.friendRequestList'>
+                      <div class="row">
+                        <div class="col-7 col-sm-7 col-md-8  col-lg-8 col-xl-8">
+                            <h5>{{name.senderName | titlecase}} </h5>
+                        </div>
+                        <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-4">
+                          <button class="btn btn-link btn-sm bg-success"  data-toggle="tooltip" data-placement="bottom" title="Accept" (click)='requestAccepted(name)' ><i class="fa  fa-check" style="font-size:20px;color:white;" ></i></button>
+                          <button class="btn btn-sm bg-danger btn-link"  data-toggle="tooltip" data-placement="bottom" title="Reject" (click)='requestReject(name)' ><i class="fa fa-remove" style="font-size:20px;color:white;"></i></button>
+ 
+                        </div>
+                      </div>
+                            </div>
+           </div>
+    </div> 
+   <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+        <button class="btn btn-link" (click)="LogOut()" ><i class="fa fa-power-off" style="font-size:36px;color: white;margin-top: 5px;"  ></i> </button>      
+  </div>
+  </div>
+  <div id="mySidenav" class="sidenav"  *ngIf="this.userInfo">
+    <button class="btn btn-sm closebtn"  (click)="closeNav()">&times;</button>
+    <img src="assets/photo.png" >
+    <div class="text-center">
+    <i style="color:black;text-align: center"><b>{{this.userInfo.firstName |titlecase}} {{this.userInfo.lastName}}</b></i><br>
+    <i style="color:black;text-align: center">{{this.userInfo.email}}</i>
+    </div>  
+    <br>
+    <h5 class="text-muted"><b>Friends list:</b></h5>
+    <div class="row" *ngIf='this.friendList.length>0'>
+        <div class="col-xl-12 text-center" *ngFor='let friend of this.friendList'>
+              <button class="form-control friend-style btn bg-light" (click)='controller=true;getusersAllTasks(friend)' *ngIf='friend.active=="true"'>{{friend.name | titlecase}}</button>
+        </div>
+    </div>
+    <div class="text-center text-muted" *ngIf='this.friendList.length==0'>empty friends list</div>
+  </div>
+  
+  <span class="menu "  (click)="openNav()">&#9776;</span>
+  <div class="container" *ngIf='!controller' >
+  <div class="row">
+    <button class="btn btn-lg rounded-circle make-button" (click)='addTitle()' data-toggle="tooltip" data-placement="top" title="Add task title"  data-toggle="modal" data-target="#newTask"><i class="fa fa-plus" style="color:white"></i></button>
+  </div>
+<br>
+<h5 class="text-muted" *ngIf='taskList.length>0'><b>Task to do:</b></h5>
+<div class="container " id='listScroll'>
+<div *ngIf='taskList'>
+<div class="row rounded  " *ngFor='let task of taskList'>
+         <div class="col-7 col-sm-8 col-md-9 col-lg-9 col-xl-9  private list" *ngIf='task.private'>
+              <button class="btn-link btn  " (click)='isEmptyTask(task)'  style="color:black;text-decoration:none" data-toggle="collapse" [attr.data-target]="'#'+ task.taskId" aria-expanded="false" aria-controls="collapseExample"><b><i class="fa fa-caret-right" style="font-size:20px"></i>   {{task.taskTitle }}</b></button>
+        </div>
+        <div class="col-7 col-sm-8 col-md-9 col-lg-9  col-xl-9 public list" *ngIf='!task.private'>
+          <button class="btn-link btn " (click)='isEmptyTask(task)' style="color:black;text-decoration:none" data-toggle="collapse" [attr.data-target]="'#'+ task.taskId" aria-expanded="false" aria-controls="collapseExample"><b><i class="fa fa-caret-right" style="font-size:20px"></i>   {{task.taskTitle }}</b></button>
+    </div>
+        <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-3 list  ">
+          <button  (click)='openList(task)' data-toggle="tooltip" data-placement="top" title="Add task" class=" btn btn-sm btn-link" data-toggle="modal" data-target="#exampleModal"><i class="fa lists fa-plus"></i></button>
+          <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteFullTask(task)'><i class="fa lists fa-remove"></i></button>
+          <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Undo task" (click)='undoTask(task)'><i class="fa lists fa-undo"></i></button>
+
+        </div> 
+    
+      <div class="col-12">
+    <div class="collapse" id='{{task.taskId}}'>
+        <div  *ngIf='task.taskList.length>0'>
+        <div class="row" *ngFor='let newTask of task.taskList'>
+          <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" *ngIf='!newTask.completed'></div>
+          <div class="col-5 col-sm-7 col-md-8 col-lg-8 col-xl-8 list taskName  word-wrap" *ngIf='!newTask.completed'><b>{{newTask.taskName}}</b></div>
+          <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-3 list " *ngIf='!newTask.completed'>
+              <button class="btn  btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Task completed?" (click)='completedTask(newTask)'><i class="fa lists fa-thumbs-up"></i></button>
+              <button  (click)='openList(newTask) ' data-toggle="tooltip" data-placement="top" title="Edit task" class="btn btn-sm btn-link " data-toggle="modal" data-target="#exampleEdit"><i class="fa lists fa-pencil"></i></button>
+              <button  (click)='openList(newTask)' data-toggle="tooltip" data-placement="top" title="Add sub-task" class="btn btn-sm btn-link " data-toggle="modal" data-target="#example"><i class="fa lists fa-plus"></i></button>
+              <button class="btn  btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteTask(newTask,task)'><i class="fa lists fa-remove"></i></button>
+              <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Undo sub-task" (click)='undoSubTask(newTask)'><i class="fa lists fa-undo"></i></button>
+
+            </div>
+             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" *ngIf='newTask.completed'></div>
+             <div class="col-5 col-sm-7 col-md-8 col-lg-8 col-xl-8 list taskName  word-wrap"  *ngIf='newTask.completed'><b>{{newTask.taskName}}</b></div>
+             <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-3 list " *ngIf='newTask.completed'>
+                 <button class="btn  btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="completed" (click)='reCompleteTask(newTask)'><i class="fa lists fa-thumbs-up" style="color:green"></i></button>
+                 <button class="btn  btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteTask(newTask,task)'><i class="fa lists fa-remove"></i></button>
+                 <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Undo sub-task" (click)='undoSubTask(newTask)'><i class="fa lists fa-undo"></i></button>
+
+                </div>        
+          <div class="col-xl-12">
+          <div *ngIf='newTask.subTaskList.length>0'>
+            <div class="row" *ngFor='let task of newTask.subTaskList' >
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" *ngIf='!task.subTaskCompleted'></div>
+                <div class="col-4 col-sm-6 col-md-7 col-lg-7 col-xl-7 taskName list  word-wrap" *ngIf='!task.subTaskCompleted'><b>{{task.subTaskName}}</b></div>
+                <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-3 list " *ngIf='!task.subTaskCompleted'>
+                    <button class="btn btn-sm btn-link  " data-toggle="tooltip" data-placement="top" title="Task completed?" (click)='completedSubTask(task,newTask)'><i class="fa lists fa-thumbs-up"></i></button>
+                    <button  (click)='openTaskList(task,newTask) ' data-toggle="tooltip" data-placement="top" title="Edit sub-task" class="btn btn-sm btn-link " data-toggle="modal" data-target="#exampleEditSubTask"><i class="fa lists fa-pencil"></i></button>                 
+                    <button class=" btn btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteSubTask(task,newTask)'><i class="fa lists fa-remove"></i></button>
+                </div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" *ngIf='task.subTaskCompleted'></div>
+                <div class="col-4 col-sm-6 col-md-7 col-lg-7 col-xl-7 taskName list  word-wrap" *ngIf='task.subTaskCompleted'><b>{{task.subTaskName}}</b></div>
+                <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-3 list " *ngIf='task.subTaskCompleted'>
+                    <button class="btn btn-sm btn-link  " data-toggle="tooltip" data-placement="top" title="completed" (click)='reCompleteSubTask(task,newTask)'><i class="fa lists fa-thumbs-up" style="color:green"></i></button>
+                    <button class=" btn btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteSubTask(task.newTask)'><i class="fa lists fa-remove"></i></button>
+                </div>
+            </div>
+          </div>
+          </div>
+        </div> 
+      </div> 
+         </div>
+         </div>
+
+</div>
+</div>
+<br>
+</div>
+</div>
+<div class="container" *ngIf='this.searchedList.length>0 && controller'>
+    <div class="row" *ngFor='let name of this.searchedList'>
+      <div class="col-12 col-md-8 col-lg-6 col-xl-6" >
+        <div *ngIf='name.userId!=userInfo.userId'>
+          <div class="row friend-request">
+            <div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-8">
+              <h5>{{name.userName | titlecase}}</h5>
+              <i class="text-muted">{{name.email}}</i><br>
+              <i class="text-muted">+{{name.mobileNumber}}</i>
+              </div>
+              <div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-4">
+              <button class="btn btn-sm btn-success" (click)='sendRequest(name)' *ngIf='name.newFriend==true' ><i class="fa fa-user-plus"></i> Add friend</button>
+              <button class="btn btn-sm btn-success" *ngIf='name.friend==false && name.newFriend==false' disabled> sent request</button>
+              <button class="btn btn-sm btn-success" *ngIf='name.friend==true && name.newFriend==false' disabled> friend</button>
+
+            </div>
+            </div>
+            </div>
+          </div>
+      </div>
+</div>
+
+<div class="container" id='listScroll' *ngIf='friendTaskList.length>0'>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn pull-right btn-link" data-toggle="tooltip" data-placement="top" title="Unfriend" (click)='unFriend()'>Unfriend</button>
+        </div>
+    </div>
+    <br>
+  <div class="row rounded  " *ngFor='let task of friendTaskList'>
+ <div class="col-7 col-sm-8 col-md-9 col-lg-9 col-xl-10 public list" *ngIf='!task.private'>
+   <button class="btn-link btn  word-wrap " (click)='isEmptyTask(task)' style="color:black;text-decoration:none" data-toggle="collapse" [attr.data-target]="'#'+ task.taskId" aria-expanded="false" aria-controls="collapseExample"><b><i class="fa fa-caret-right" style="font-size:20px"></i>   {{task.taskTitle }}</b></button>
+  </div>
+ <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-2 list  ">
+   <button  (click)='openList(task)' data-toggle="tooltip" data-placement="top" title="Add task" class=" btn btn-sm btn-link" data-toggle="modal" data-target="#friendTask"><i class="fa lists fa-plus"></i></button>
+   <button class="btn btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteFriendFullTask(task)'><i class="fa lists fa-remove"></i></button>
+   <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Undo task" (click)='undofriendTask(task)'><i class="fa lists fa-undo"></i></button>
+
+  </div> 
+
+<div class="col-xl-12">
+<div class="collapse" id='{{task.taskId}}'>
+ <div  *ngIf='task.taskList.length>0'>
+ <div class="row" *ngFor='let newTask of task.taskList'>
+   <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+   <div class="col-5 col-sm-7 col-md-8 col-lg-8 col-xl-9 list taskName  word-wrap"><b>{{newTask.taskName}}</b></div>
+   <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-2 list " *ngIf='newTask.completed'>
+      <button class="btn  btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="completed" disabled><i class="fa lists fa-thumbs-up" style="color:green"></i></button>
+       <button class="btn  btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteFriendTask(newTask,task)'><i class="fa lists fa-remove"></i></button>
+       <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Undo sub-task" (click)='undofriendSubTask(newTask,task)'><i class="fa lists fa-undo"></i></button>
+
+      </div>
+      <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 list  "  *ngIf='!newTask.completed'>
+          <button  (click)='openTaskList(newTask,task) ' data-toggle="tooltip" data-placement="top" title="Edit task" class="btn btn-sm btn-link " data-toggle="modal" data-target="#editFriendTask"><i class="fa lists fa-pencil"></i></button>
+          <button  (click)='openTaskList(newTask,task)' data-toggle="tooltip" data-placement="top" title="Add sub-task" class="btn btn-sm btn-link " data-toggle="modal" data-target="#friendNewTask"><i class="fa lists fa-plus"></i></button>
+          <button class="btn  btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteFriendTask(newTask,task)'><i class="fa lists fa-remove"></i></button>
+          <button class="btn btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="Undo sub-task" (click)='undofriendSubTask(newTask,task)'><i class="fa lists fa-undo"></i></button>
+
+        </div>   
+   <div class="col-xl-12">
+   <div *ngIf='newTask.subTaskList.length>0'>
+     <div class="row" *ngFor='let subTask of newTask.subTaskList' >
+         <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+         <div class="col-4 col-sm-6 col-md-7 col-lg-7 col-xl-8 taskName  word-wrap list"><b>{{subTask.subTaskName}}</b></div>
+         <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-2 list " *ngIf='subTask.subTaskCompleted'>
+            <button class="btn  btn-sm btn-link " data-toggle="tooltip" data-placement="top" title="completed" disabled><i class="fa lists fa-thumbs-up" style="color:green"></i></button>
+             <button class=" btn btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteFriendSubTask(subTask,newTask,task)'><i class="fa lists fa-remove"></i></button>
+        </div>
+        <div class="col-5 col-sm-4 col-md-3 col-lg-3  col-xl-2 list " *ngIf='!subTask.subTaskCompleted'>
+             <button  (click)='openTaskList(subTask,task,newTask) ' data-toggle="tooltip" data-placement="top" title="Edit sub-task" class="btn btn-sm btn-link " data-toggle="modal" data-target="#editFriendSubTask"><i class="fa lists fa-pencil"></i></button>                 
+             <button class=" btn btn-sm btn-link" data-toggle="tooltip" data-placement="top" title="Delete" (click)='deleteFriendSubTask(subTask,newTask,task)'><i class="fa lists fa-remove"></i></button>
+        </div>
+     </div>
+   </div>
+   </div>
+ </div> 
+</div> 
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="modal fade" *ngIf='selectedTask' id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" >
+        <div class="modal-header" >
+          <br>
+          <h5 class="modal-title" id="exampleModalLabel"><b>Add new task</b></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <b>Task name:</b>
+            <input class="form-control" type="text" placeholder="add task here" [(ngModel)]=this.taskName autofocus>
+            <br>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+          <button data-dismiss="modal" (click)='addTask(selectedTask)' class="btn btn-sm btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" *ngIf='selectedTask' id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" >
+          <div class="modal-header" >
+            <h5 class="modal-title" id="exampleModalLabel"><b>Add new sub task</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <b>sub-Task name:</b>
+              <input class="form-control" type="text" placeholder="add sub-task here" [(ngModel)]=this.subTaskName autofocus>
+              <br>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+            <button data-dismiss="modal" (click)='addSubTask(selectedTask)' class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" *ngIf='selectedTask' id="exampleEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" >
+            <div class="modal-body">
+                <b>Edit task:</b>
+                <input class="form-control" type="text" [(ngModel)]=this.selectedTask.taskName autofocus>
+                <br>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+              <button data-dismiss="modal" (click)='updateTask(selectedTask)' class="btn btn-sm btn-primary">Update</button>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" *ngIf='selectedTask' id="exampleEditSubTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" >
+              <div class="modal-body">
+                  <b>Edit sub-task:</b>
+                  <input class="form-control" type="text" [(ngModel)]=this.selectedTask.subTaskName autofocus>
+                  <br>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button data-dismiss="modal" (click)='updateSubTask(selectedTask)' class="btn btn-sm btn-primary">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" *ngIf='user' id="newTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" >
+              <div class="modal-body">
+                  <b>Create task title:</b>
+                  <br>
+                  <input class="form-control" type="text" [(ngModel)]=this.user.taskTitle autofocus>
+                  <br>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]=this.user.private id="defaultUnchecked">
+                    <label class="custom-control-label" for="defaultUnchecked">Private</label>
+                </div>
+                  <br>
+                  <div class="alert alert-warning">
+                    <strong>Task</strong> will be public by default 
+                  </div> 
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button data-dismiss="modal" (click)='createTask(user)' class="btn btn-sm btn-primary">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" *ngIf='selectedTask' id="friendTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" >
+              <div class="modal-body">
+                  <b>Add new-task:</b>
+                  <input class="form-control" type="text" [(ngModel)]=this.taskName autofocus>
+                  <br>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button data-dismiss="modal" (click)='addFriendTask(selectedTask)' class="btn btn-sm btn-primary">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" *ngIf='selectedTask' id="friendNewTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" >
+              <div class="modal-body">
+                  <b>Add sub-task:</b>
+                  <input class="form-control" type="text" [(ngModel)]=this.subTaskName autofocus>
+                  <br>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button data-dismiss="modal" (click)='addFriendSubTask(selectedTask,mainTask)' class="btn btn-sm btn-primary">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" *ngIf='selectedTask' id="editFriendTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" >
+              <div class="modal-body">
+                  <b>Edit task:</b>
+                  <input class="form-control" type="text" [(ngModel)]=this.selectedTask.taskName autofocus>
+                  <br>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button data-dismiss="modal" (click)='editFriendTask(selectedTask,mainTask)' class="btn btn-sm btn-primary">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" *ngIf='selectedTask' id="editFriendSubTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" >
+              <div class="modal-body">
+                  <b>Edit sub-task:</b>
+                  <input class="form-control" type="text" [(ngModel)]=this.selectedTask.subTaskName autofocus>
+                  <br>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <button data-dismiss="modal" (click)='editFriendSubTask(selectedTask,mainTask)' class="btn btn-sm btn-primary">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>

@@ -1,0 +1,225 @@
+.word-wrap{word-wrap: break-word;}
+
+.header{
+    background: #f5f7f7;
+    -webkit-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);    
+border-radius: 20px;
+}
+.header input{
+    background: white
+}
+.main{
+    background: lightseagreen;
+}
+
+.dropdown-menu{
+    width: 30vw !important;
+    border-radius: 10px;
+    right: 0;
+left: initial;
+}
+.dropdown-item button{
+    margin-left: 5px;
+}
+.menu{
+    font-size:35px;cursor:pointer;
+  }
+  .sidenav {
+    height: 100%;
+    width: 0;
+    border: 5px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-radius: 0px 10px 10px 0px;
+    background-color:lightseagreen;
+    overflow-x: hidden;
+    transition: 0.1s;
+    padding-top: 60px;
+  }
+  img{
+    display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+  }
+  .sidenav button {
+    font-size: 18px;
+    background:lightseagreen;
+    color: #818181;
+    transition: 0.1s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  .back{
+      background: #f5f7f7;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  @media screen and (max-width: 950px) {
+    .dropdown-menu{
+        width: 40vw !important;  
+    }
+    } 
+    @media screen and (max-width: 600px) {
+        .dropdown-menu{
+            width: 60vw !important;  
+        }
+        } 
+  @media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  }
+.friend-style{
+    width: 90%;
+    color: black;
+    margin-top: 2px;
+    outline-style:none;
+    box-shadow:none;
+}
+
+.group{
+    margin-top: 20px;
+}
+.group input{
+    margin-right: 5px;
+    border-radius: 15px !important;
+    outline-style:none;
+    box-shadow:none;
+}
+.title{
+    outline-style:none;
+    box-shadow:none;
+}
+.private{
+    border-left: 10px solid red;
+}
+.public{
+    border-left: 10px solid green;
+}
+.list{
+    background:#f5f7f7;
+    -webkit-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);  
+    margin-bottom: 3px; 
+}
+.make-button{
+    background: lightseagreen;
+    outline-style: none;
+    -webkit-box-shadow: 3px 4px 2px -1px rgba(0,0,0,0.81);
+    -moz-box-shadow: 3px 4px 2px -1px rgba(0,0,0,0.81);
+    box-shadow: 3px 4px 2px -1px rgba(0,0,0,0.81);
+}
+.lists{
+    color: black;
+    font-size: 15px;
+}
+.lists:hover{
+    color: green;
+}
+.friend-request{
+    background: #f5f7f7;
+    -webkit-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);  
+    border-radius: 10px;
+    margin: 3px;
+}
+.friend-list{
+    background: lightblue;
+    -webkit-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 14px -1px rgba(0,0,0,0.75);  
+    border-radius: 10px;
+    margin: 3px;
+
+}
+.friend-request button{
+    margin-top: 15px;
+}
+.taskName button{
+    text-decoration: none;
+    outline-style:none;
+    color: black;
+    box-shadow:none;}
+.main input{
+    margin: 10px;
+    border-radius: 10px !important;
+    outline-style:none;
+    box-shadow:none;
+  
+}
+
+.main button{
+    text-decoration: none;
+}
+
+.pad{
+    padding: 2px;
+}
+.padd{
+    padding: 4px;
+}
+#listScroll{
+    padding: 1em 2em 1.42em;
+    overflow-y: auto; 
+    height: 64vh;
+}
+
+#listScroll::-webkit-scrollbar {
+        width: 5px;
+}
+     
+#listScroll::-webkit-scrollbar-track {
+        border-radius: 5px;
+    }
+     
+#listScroll::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+    }
+
+.pad button{
+    margin: 5px;
+    color: white;
+}
+.taskName{
+    padding-top:10px; 
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+.modal-body button{
+    outline-style:none;
+    float:right;
+}
+.hide{
+    display: block;
+}
+.hide-two{
+    display: none;
+}
+@media screen and (max-width: 576px) {
+    .hide{
+        display:none ;
+    }
+    .hide-two{
+        display: block;
+    }
+    }

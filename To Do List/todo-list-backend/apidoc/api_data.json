@@ -1,0 +1,900 @@
+[
+  {
+    "group": "friend_request",
+    "type": "post",
+    "url": "/api/v1/get/all/friendRequest",
+    "title": "to get all friend request",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"friend request list found\",\n    \"status\": 200,\n    \"data\": [\n        {\n            \"requestId\": \"KakKzn8vu\",\n            \"senderId\": \"GYvRfmecu\",\n            \"senderName\": \"ashish mangukiya\",\n            \"recieverId\": \"fVYtYufLI\",\n            \"recieverName\": \"ashish patel\",\n            \"active\": false,\n            \"_id\": \"5bbc819c01ffc62040b8e9dd\",\n            \"__v\": 0\n        }\n    ]\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"error\": true,\n \"message\": \"Failed To find friends request\",\n \"status\": 403,\n \"data\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "friend_request",
+    "name": "PostApiV1GetAllFriendrequest"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/add/friend/sub/task",
+    "title": "to add friend's sub-task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id of friend's task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "subTaskName",
+            "description": "<p>subTaskName of friend's sub-task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"sub-task added\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"nModified\": 1,\n        \"ok\": 1\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1AddFriendSubTask"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/add/friend/task",
+    "title": "to add friend's task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "taskId",
+            "description": "<p>taskId of friend's task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "taskName",
+            "description": "<p>taskName of friend's task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"task added\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"nModified\": 1,\n        \"ok\": 1\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1AddFriendTask"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/delete/friend/full/task",
+    "title": "to delete friend's full-task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "taskId",
+            "description": "<p>taskId of friend's task.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"task deleted\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"ok\": 1\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"error\": true,\n \"message\": \"Failed To delete friend task\",\n \"status\": 403,\n \"data\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1DeleteFriendFullTask"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/edit/friend/sub/task",
+    "title": "to edit friend's sub-task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id of friend's task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "subTaskId",
+            "description": "<p>subTaskId of friend's sub-task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "subTaskName",
+            "description": "<p>subTaskName of friend's sub-task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"sub-task edited\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 6,\n        \"nModified\": 0,\n        \"ok\": 1\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1EditFriendSubTask"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/edit/friend/task",
+    "title": "to edit friend's task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id of friend's task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "taskName",
+            "description": "<p>taskName of friend's task .(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"task edited\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"nModified\": 1,\n        \"ok\": 1\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1EditFriendTask"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/get/all/friend/tasks",
+    "title": "to get all friend's tasks",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of friend.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"task detail found\",\n    \"status\": 200,\n    \"data\": [\n        {\n            \"taskId\": \"UObWsTbh7\",\n            \"taskTitle\": \"one\",\n            \"taskList\": [\n                {\n                    \"id\": \"7A1ub8KfM\",\n                    \"taskName\": \"two\",\n                    \"completed\": false,\n                    \"subTaskList\": [\n                        {\n                            \"subTaskId\": \"ciDy13z1m\",\n                            \"subTaskName\": \"three\",\n                            \"subTaskCompleted\": false,\n                            \"_id\": \"5bbc83d701ffc62040b8e9e1\"\n                        }\n                    ],\n                    \"_id\": \"5bbc83ce01ffc62040b8e9e0\"\n                }\n            ],\n            \"userId\": \"GYvRfmecu\",\n            \"userName\": \"ashish mangukiya\",\n            \"completed\": false,\n            \"createdOn\": \"2018-10-09T10:32:33.753Z\",\n            \"private\": false,\n            \"_id\": \"5bbc83c701ffc62040b8e9df\",\n            \"__v\": 0\n        }\n    ]\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"error\": true,\n \"message\": \"Failed To find friend tasks\",\n \"status\": 403,\n \"data\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1GetAllFriendTasks"
+  },
+  {
+    "group": "task",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/get/all/tasks",
+    "title": "to get all created tasks of user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"task detail found\",\n    \"status\": 200,\n    \"data\": [\n        {\n            \"taskId\": \"cUKSN1m2j\",\n            \"taskTitle\": \"meeting at midnight\",\n            \"taskList\": [\n                {\n                    \"id\": \"VD6jlCnAJ\",\n                    \"taskName\": \"one\",\n                    \"completed\": false,\n                    \"subTaskList\": [\n                        {\n                            \"subTaskId\": \"BP-_OfbhK\",\n                            \"subTaskName\": \"two\",\n                            \"subTaskCompleted\": false,\n                            \"_id\": \"5bbc80aa01ffc62040b8e9da\"\n                        }\n                    ],\n                    \"_id\": \"5bbc80a001ffc62040b8e9d9\"\n                }\n            ],\n            \"userId\": \"fVYtYufLI\",\n            \"userName\": \"ashish patel\",\n            \"completed\": false,\n            \"createdOn\": \"2018-10-09T10:18:43.066Z\",\n            \"private\": false,\n            \"_id\": \"5bbc809101ffc62040b8e9d8\",\n            \"__v\": 0\n        }\n    ]\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"error\": true,\n \"message\": \"Failed To find tasks\",\n \"status\": 403,\n \"data\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1GetAllTasks"
+  },
+  {
+    "group": "task",
+    "type": "post",
+    "url": "/api/v1/get/user/detail",
+    "title": "to get user's detail",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"user found\",\n    \"status\": 200,\n    \"data\": [\n        {\n            \"userId\": \"fVYtYufLI\",\n            \"firstName\": \"ashish\",\n            \"lastName\": \"patel\",\n            \"userName\": \"ashish patel\",\n            \"friendList\": [],\n            \"email\": \"ashishmangukiyapm@gmail.com\",\n            \"country\": \"IN\",\n            \"mobileNumber\": 918446680648,\n            \"activated\": true,\n            \"createdOn\": \"2018-10-09T08:42:11.000Z\",\n            \"recoveryPassword\": \"\",\n            \"_id\": \"5bbc69e38e41011eacf279b3\",\n            \"__v\": 0\n        }\n    ]\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"error\": true,\n \"message\": \"Failed To find user detail\",\n \"status\": 403,\n \"data\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/tasks.js",
+    "groupTitle": "task",
+    "name": "PostApiV1GetUserDetail"
+  },
+  {
+    "group": "user",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/user/login",
+    "title": "to login user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email id of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"Login Successful\",\n    \"status\": 200,\n    \"data\": {\n        \"authToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6IkJ6cHhMMnhEaiIsImlhdCI6MTUzOTA3OTk1NjQxMSwiZXhwIjoxNTM5MTY2MzU2LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJ0b2RvbGlzdCIsImRhdGEiOnsidXNlcklkIjoiZlZZdFl1ZkxJIiwiZmlyc3ROYW1lIjoiYXNoaXNoIiwibGFzdE5hbWUiOiJwYXRlbCIsInVzZXJOYW1lIjoiYXNoaXNoIHBhdGVsIiwiZnJpZW5kTGlzdCI6W3siaWQiOiJHWXZSZm1lY3UiLCJuYW1lIjoiYXNoaXNoIG1hbmd1a2l5YSIsImFjdGl2ZSI6InRydWUifV0sImVtYWlsIjoiYXNoaXNobWFuZ3VraXlhcG1AZ21haWwuY29tIiwiY291bnRyeSI6IklOIiwibW9iaWxlTnVtYmVyIjo5MTg0NDY2ODA2NDgsImFjdGl2YXRlZCI6dHJ1ZSwicmVjb3ZlcnlQYXNzd29yZCI6IiJ9fQ.GP5cU6IRgKibOaXgk0-k6KvfnommwUJuLuV02KA1srw\",\n        \"userDetails\": {\n            \"userId\": \"fVYtYufLI\",\n            \"firstName\": \"ashish\",\n            \"lastName\": \"patel\",\n            \"userName\": \"ashish patel\",\n            \"friendList\": [\n                {\n                    \"id\": \"GYvRfmecu\",\n                    \"name\": \"ashish mangukiya\",\n                    \"active\": \"true\"\n                }\n            ],\n            \"email\": \"ashishmangukiyapm@gmail.com\",\n            \"country\": \"IN\",\n            \"mobileNumber\": 918446680648,\n            \"activated\": true,\n            \"recoveryPassword\": \"\"\n        }\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-response:",
+          "content": "{\n    \"error\": true,\n    \"message\": \"no user detail found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "user",
+    "name": "PostApiV1UserLogin"
+  },
+  {
+    "group": "user",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/user/logout",
+    "title": "to logout user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>authToken of the user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"Logged Out Successfully\",\n    \"status\": 200,\n    \"data\": null\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-response:",
+          "content": "{\n    \"error\": true,\n    \"message\": \"Already Logged Out or Invalid User\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "user",
+    "name": "PostApiV1UserLogout"
+  },
+  {
+    "group": "user",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/user/resetPassword",
+    "title": "to reset user's password",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email id of the user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-response:",
+          "content": "    {\n    \"error\": false,\n    \"message\": \"Password reset Successfully\",\n    \"status\": 200,\n    \"data\": {\n        \"error\": false,\n        \"message\": \"Password reset successfully\",\n        \"status\": 200,\n        \"data\": {\n            \"n\": 1,\n            \"nModified\": 1,\n            \"ok\": 1\n        }\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-response:",
+          "content": "{\n    \"error\": true,\n    \"message\": \"no user found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "user",
+    "name": "PostApiV1UserResetpassword"
+  },
+  {
+    "group": "user",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/user/signup",
+    "title": "to create new user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "firstName",
+            "description": "<p>first name of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "lastName",
+            "description": "<p>last name of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email id of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "mobileNumber",
+            "description": "<p>mobileNumber of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "strign",
+            "optional": false,
+            "field": "country",
+            "description": "<p>user's country name.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"User created\",\n    \"status\": 200,\n    \"data\": {\n        \"userId\": \"kauJhCLvW\",\n        \"firstName\": \"sherul\",\n        \"lastName\": \"patel\",\n        \"friendList\":[],\n        \"activated\": false,\n        \"country\": \"IN\",\n        \"email\": \"sherulpatel@gmail.com\",\n        \"mobileNumber\": \"8087977048\",\n        \"recoveryPassword\": \"\",\n        \"_id\": \"5ba7340ad080cb0ac34a117e\",\n        \"__v\": 0\n   }       }",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n \"error\": true,\n \"message\": \"User Already Present With this Email\",\n \"status\": 403,\n \"data\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "user",
+    "name": "PostApiV1UserSignup"
+  },
+  {
+    "group": "user",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/user/updatePassword",
+    "title": "to update user's password",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "recoveryPassword",
+            "description": "<p>recoveryPassword of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>new password of the user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"Password Update Successfully\",\n    \"status\": 200,\n    \"data\": {\n        \"error\": false,\n        \"message\": \"Password Updated successfully\",\n        \"status\": 200,\n        \"data\": {\n            \"n\": 1,\n            \"nModified\": 1,\n            \"ok\": 1\n        }\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-response:",
+          "content": "{\n    \"error\": true,\n    \"message\": \"No User Details Found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "user",
+    "name": "PostApiV1UserUpdatepassword"
+  },
+  {
+    "group": "user",
+    "version": "0.0.1",
+    "type": "post",
+    "url": "/api/v1/user/verify/account",
+    "title": "to verify user's account",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of the user.(body params)(required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "secretId",
+            "description": "<p>secretId of the user.(body params)(required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "apiResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"account verified\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"nModified\": 1,\n        \"ok\": 1\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "error-response:",
+          "content": "{\n    \"error\": true,\n    \"message\": \"detail not found\",\n    \"status\": 500,\n    \"data\": null\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "user",
+    "name": "PostApiV1UserVerifyAccount"
+  }
+]

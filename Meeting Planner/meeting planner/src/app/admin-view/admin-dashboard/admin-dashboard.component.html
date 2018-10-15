@@ -1,0 +1,27 @@
+<div id="mySidenav" class="sidenav"  *ngIf="this.userInfo">
+  <button class="btn btn-sm closebtn"  (click)="closeNav()">&times;</button>
+  <img src="assets/photo.png" >
+  <h5 style="color:black;text-align: center"><b>{{this.userInfo.firstName |titlecase}} {{this.userInfo.lastName}}</b></h5>
+  <p style="color:black;text-align: center">{{this.userInfo.email}}</p>
+  <br><br>
+  <button class="btn btn-sm btn-outline-success" (click)='LogOut()'  style="color: black;margin-left: auto;margin-right: auto;" >LogOut</button>
+</div>
+
+<span class="menu "  (click)="openNav()">&#9776;</span>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-7 col-md-6 col-lg-6 col-xl-7 main">
+      <img src="assets/meetingAdmin.jpg" class="set" >
+    </div>
+    <div class="col-12 col-sm-5 col-md-6 col-lg-6 col-xl-5">
+    <div class="row" *ngIf='this.userList'>
+      <button  class="col-12 col-xl-12 btn-success btn but " disabled><b>User List</b></button>
+      <div class="col-xl-12  center"  *ngFor='let user of this.userList'>
+        <button class="btn btn-outline-success form-control  name-color " [routerLink]="['/admin-view',user.userId]"><b>{{user.firstName  |titlecase}} {{user.lastName}}</b></button>
+      </div>
+    </div>
+    </div>
+   
+  </div>
+</div>

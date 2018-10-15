@@ -1,0 +1,32 @@
+<div class="container-fluid back">
+  <div class="row" *ngIf="currentBook">
+    <div class="col-12" style="text-align: center">
+      <br>
+        <h2>Book Detail</h2>
+        <hr>
+      <h3>TITLE: {{currentBook.name| uppercase}}</h3>
+      </div>
+      <div class="col-8 col-md-4 special" >
+      <img src="assets/./book.jpeg" >
+      </div>
+      <div class="col-md-8 one " >
+        <p><b>Author:</b> {{currentBook.authors}}</p>
+        <p><b>Pages:</b> {{currentBook.numberOfPages}}</p>
+        <p><b>Released On :</b> {{currentBook.released |date}}  </p>
+        <P><b>ISBN NO:</b> {{currentBook.isbn }} </P>
+        <p><b>Publisher:</b>{{currentBook.publisher }} </p>
+        <p><b>Country:</b> {{currentBook.country }} </p>
+        <p><b>MediaType: </b>{{currentBook.mediaType }} </p>     
+      </div>
+      </div>      
+    <br>
+    <h2>Characters:</h2>
+
+    <div class="character">
+    <div class="row"  *ngIf="currentBook">      
+      <div class="co-12 col-md-6  col-lg-4" *ngFor="let character of currentBook.characters">
+        <p style="font-size:14px " >{{character}}</p>
+      </div>
+    </div>
+</div>
+</div>

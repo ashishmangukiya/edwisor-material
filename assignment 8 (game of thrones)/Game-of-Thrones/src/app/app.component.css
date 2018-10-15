@@ -1,0 +1,14 @@
+.header{
+    color: white;
+    padding: 2%;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 15px;
+    background: radial-gradient(red, yellow, green);
+
+}
+a:hover{
+    display: block;
+    background: gold;
+    border-radius: 10px;
+}

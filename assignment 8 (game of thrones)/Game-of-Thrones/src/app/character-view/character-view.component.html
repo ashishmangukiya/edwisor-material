@@ -1,0 +1,42 @@
+  <div class="container-fluid back">
+      <div class="row" *ngIf="currentCharacter">
+        <div class="col-12" style="text-align: center">
+          <br>
+            <h3>Character Detail</h3>
+            <hr>
+          <h4>CHARACTER NAME: {{currentCharacter.name| uppercase}}</h4>
+          </div>
+          </div>
+          <br>
+          <div class="row" *ngIf="currentCharacter">
+          <div class="col-12 col-md-5 special" >
+          <img src="assets/./character.jpg" >
+          </div>
+          
+          <div class="col-md-7 one "style="text-align: center" >
+            <p><b>Gender :</b>{{currentCharacter.gender}}</p>
+            <p><b>Born:</b> {{currentCharacter.born}}</p>
+            <p><b>Died :</b> {{currentCharacter.died}}  </p>
+            <P><b>Culture:</b> {{currentCharacter.culture }} </P>
+            <p><b>Father: </b></p><p style="font-size: 14px">{{currentCharacter.father}} </p>
+            <p><b>Mother:</b></p><p style="font-size: 14px"> {{currentCharacter.mother }} </p>
+            <p><b>Spouse: </b></p><p style="font-size: 14px">{{currentCharacter.spouse }} </p>     
+          </div>
+          </div>      
+        <br>
+        <h3>Other Detail:</h3>
+    
+        <div class="character">
+        <div class="row" *ngIf="currentCharacter">      
+          <div class="col-12" style="text-align: center">
+              <p><b>Played By: </b>{{currentCharacter.playedBy }} </p>  
+              <p><b>Titles: </b>{{currentCharacter.titles }} </p>   
+              <p><b>Aliases: </b>{{currentCharacter.aliases}} </p>
+              <p><b>Allegiances: </b></p><p style="font-size: 14px" *ngFor="let allegiance of currentCharacter.allegiances">{{allegiance }} </p>
+              <p><b>Tv Series: </b>{{currentCharacter.tvSeries }} </p>
+            <p> <b>Books: </b></p><p style="font-size: 14px" *ngFor="let book of currentCharacter.books">{{book }} </p>  
+              <p><b>PovBooks: </b>{{currentCharacter.povBooks}} </p>     
+          </div>
+        </div>
+    </div>
+    </div>
