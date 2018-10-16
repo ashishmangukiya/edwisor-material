@@ -22,8 +22,8 @@ User Activity:
 
 1) if new user is using this application then user has to sign up first.
    
-	if user miss any requirement during sigh-up form filling then user will get an error and user can re-correct it easily
-2) once registration done . before log-in  user must has to verify account, for that user has to click on link which is provided in user's email.
+	if user miss any requirement during sigh-up form filling then user will get an error and user can re-correct it easily.
+2) once registration done . before log-in  user must has to verify account, for that user has to click on link which is provided on user's email.
 
 3) once user logged in user will redirect to to-do list home page. 
 
@@ -31,26 +31,25 @@ User Activity:
 
 5) all friends will able to see only public task . 
 
-6) user can create task title by click on circle-button and user can also add task/sub-task on respected task-title .
+6) user can create task title by clicking on circle-button and user can also add task/sub-task on respected task-title .
 	user will able to edit task/sub-task and user can also delete fulltask/task/subtask
 
-7) if user has deleted any task/sub-task and if user want back that task/sub-task then user can also recover deleted task/sub-task by click on undo button 
+7) if user has deleted any task/sub-task and if user want back that task/sub-task then user can also recover deleted task/sub-task by clicking on undo button 
 
 8) if user has completed any task/sub-task then user can mark it as completed and if user want to complete again then click on completed button.
 
-9) user can search any friend with full name or any matching string and result will be displayed on screen.once user has sent request to any friend
-  	and user searches again the same friend name then user will not able to sent request again.
+9) user can search any friend with full name or any matching string and result will be displayed on screen.once user has sent request to any friend and user searches again the same friend name then user will not able to sent request again.
 
 	if any friend has accepted user's request then friend will be added on friend list. 
 
-10)if user forgot password then on log-in page  user has to enter email id and click on forgot password button to set new password
+10)if user forgot password then on log-in page  user has to enter email id and click on forgot password link to set new password
 
 
 multi-user activity:
 
 1) user can also reject request of any friend 
 
-2) one notification icon is there . all the friend request will be stored on notification button.
+2) one notification icon is there . if any user has sent request to you then on notification icon number of request will be shown and click on icon to disply list of all friend requests. 
 
 3)  friend can see all public task of any user and frined can not create task-title but friend can create task/sub-task, delete fulltask/task/subtask,
 	edit task/sub-task, undo task/sub-task
